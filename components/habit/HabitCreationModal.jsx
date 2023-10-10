@@ -8,29 +8,52 @@ import {
   Image,
   StyleSheet,
   Button,
+  FlatList
 } from 'react-native';
 
 import styles from './HabitCreationModal.style';
+import { icons } from '../../constants';
 
-const HabitCreationModal = ({ isVisible, onClose, onSave }) => {
+const HabitCreationModal = ({ isVisible, onClose, db }) => {
+  const isComplete = false
   const [habitName, setHabitName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedIcon, setSelectedIcon] = useState(null);
 
-  const selectIcon = () => {
-    // Implement icon selection logic here, you can use a library like react-native-image-picker or your custom logic.
+  const [icons1, setIcons] = useState([
+    {
+      id: 1,
+      name: 'heart',
+      uri: icons.heart,
+    },
+    // Add more icons here
+  ]);
+
+  const selectIcon = (icon) => {
+    setSelectedIcon(icon.uri);
   };
 
-  const saveHabit = () => {
-    onSave({
-      habitName,
-      description,
-      selectedIcon,
+  const insertHabit = (iconSource, habitName, description, isComplete) =>{
+    db.transaction(tx => {
+      tx.executeSql('INSERT INTO habits (iconSource, habitName, description, isComplete) VALUES (?, ?, ?, ?)', [iconSource, habitName, description, isComplete],
+      );
     });
+  }
+
+  const saveHabit = () => {
+    insertHabit(icons.heart, habitName, description, isComplete)
     setHabitName('');
     setDescription('');
     setSelectedIcon(null);
     onClose();
+  };
+
+  const renderIconItem = (icon) => {
+    return (
+      <TouchableOpacity onPress={() => selectIcon(icon)}>
+        <Image source={icon.uri} style={styles.iconItem} />
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -55,13 +78,12 @@ const HabitCreationModal = ({ isVisible, onClose, onSave }) => {
             onChangeText={(text) => setDescription(text)}
             style={styles.input}
           />
-          <TouchableOpacity onPress={selectIcon} style={styles.iconButton}>
-            {selectedIcon ? (
-              <Image source={selectedIcon} style={styles.selectedIcon} />
-            ) : (
-              <Text>Select Icon</Text>
-            )}
-          </TouchableOpacity>
+          <FlatList
+            data={icons1}
+            renderItem={renderIconItem}
+            numColumns={3}
+            keyExtractor={(item) => item.id}
+          />
           <Button title="Save" onPress={saveHabit} />
         </View>
       </View>

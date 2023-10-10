@@ -3,11 +3,12 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { icons } from '../../constants';
 
-const Habit = ({ iconSource, habitName, description }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
+const Habit = ({ iconSource, habitName, description, onHabitClick, isComplete }) => {
+  const [isCompleted, setIsCompleted] = useState(isComplete);
 
   const toggleCompletion = () => {
     setIsCompleted(!isCompleted);
+    onHabitClick();
   };
 
   return (
@@ -17,7 +18,7 @@ const Habit = ({ iconSource, habitName, description }) => {
         <Text style={styles.habitName}>{habitName}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
-      <TouchableOpacity onPress={toggleCompletion}>
+      <TouchableOpacity onPress={toggleCompletion} disabled={isCompleted}>
         <View
           style={[
             styles.checkbox,

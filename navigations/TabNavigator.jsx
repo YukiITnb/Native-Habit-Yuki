@@ -40,7 +40,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <View style={{alignItems: "center", justifyContent: "center", top: 10}}>
               <MaterialCommunityIcons name="home" color={color} size={size} />
-              <Text style={{fonSize: 12, color: "#16247d"}}>Home</Text>
+              <Text style={{fontSize: 12, color: "#16247d"}}>Home</Text>
             </View>
           ),
           
@@ -54,7 +54,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <View style={{alignItems: "center", justifyContent: "center", top: 10}}>
               <MaterialCommunityIcons name="bell" color={color} size={size} />
-              <Text style={{fonSize: 12, color: "#16247d"}}>Updates</Text>
+              <Text style={{fontSize: 12, color: "#16247d"}}>Updates</Text>
             </View>
           ),
         }}
@@ -67,7 +67,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <View style={{alignItems: "center", justifyContent: "center", top: 10}}>
                 <MaterialCommunityIcons name="account" color={color} size={size} />
-                <Text style={{fonSize: 12, color: "#16247d"}}>Profile</Text>
+                <Text style={{fontSize: 12, color: "#16247d"}}>Profile</Text>
             </View>
           ),
         }}
@@ -80,7 +80,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <View style={{alignItems: "center", justifyContent: "center", top: 10}}>
                 <MaterialCommunityIcons name="menu" color={color} size={size} />
-                <Text style={{fonSize: 12, color: "#16247d"}}>Setting</Text>
+                <Text style={{fontSize: 12, color: "#16247d"}}>Setting</Text>
             </View>
           ),
         }}
