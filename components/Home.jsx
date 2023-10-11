@@ -18,7 +18,7 @@ import Habit from './habit/Habit'
 import HabitCreationModal from './habit/HabitCreationModal'
 
 const Home = () => {
-  const db = SQLite.openDatabase('my-db.db')
+  const db = SQLite.openDatabase('my-db2.db')
   const [habits, setHabits] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);

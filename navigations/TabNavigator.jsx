@@ -1,6 +1,5 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -8,12 +7,13 @@ import Home from "../components/Home"
 import Profile from "../components/Profile"
 import Notifications from "../components/Notifications"
 import Setting from "../components/Setting"
-import HabitCreationModal from '../components/habit/HabitCreationModal';
+
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
+    <KeyboardAvoidingView style={{height: 790}}>
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
@@ -86,6 +86,7 @@ function MyTabs() {
         }}
       />
     </Tab.Navigator>
+    </KeyboardAvoidingView>
   );
 }
 
