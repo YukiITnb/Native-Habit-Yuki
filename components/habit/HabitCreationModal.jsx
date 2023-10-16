@@ -14,6 +14,24 @@ import {
 import styles from './HabitCreationModal.style';
 import { icons } from '../../constants';
 
+// const iconlist = [
+//   {
+//     id: 1,
+//     name: 'heart',
+//     url: icons.heart
+//   },
+//   {
+//     id: 2,
+//     name: 'share',
+//     url: icons.share
+//   },
+//   {
+//     id: 3,
+//     name: 'check',
+//     url: icons.checkmark
+//   }
+// ]
+
 const HabitCreationModal = ({ isVisible, onClose, db }) => {
   const isComplete = false
   const [habitName, setHabitName] = useState('');
@@ -41,7 +59,7 @@ const HabitCreationModal = ({ isVisible, onClose, db }) => {
   }
 
   const saveHabit = () => {
-    insertHabit(icons.heart, habitName, description, isComplete)
+    insertHabit(icons1.heart, habitName, description, isComplete)
     setHabitName('');
     setDescription('');
     setSelectedIcon(null);

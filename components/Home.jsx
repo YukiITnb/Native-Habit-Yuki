@@ -17,8 +17,9 @@ import Progress from './progressBar/ProgressBar'
 import Habit from './habit/Habit'
 import HabitCreationModal from './habit/HabitCreationModal'
 
+const db = SQLite.openDatabase('my-db2.db')
+
 const Home = () => {
-  const db = SQLite.openDatabase('my-db2.db')
   const [habits, setHabits] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -74,7 +75,7 @@ const Home = () => {
 
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite, top: StatusBar.currentHeight }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.lightWhite, top: StatusBar.currentHeight }}>
       <View style={{ flexDirection: 'row', top: 10, backgroundColor: COLORS.lightWhite, paddingLeft: SIZES.small, paddingRight: SIZES.small }}>
         <HeaderBtn iconUrl={images.profile} dimension="100%" />
         <View style={{ flex: 1 }}></View>
@@ -110,7 +111,7 @@ const Home = () => {
         onClose={closeModal}
         db={db}
       />
-    </SafeAreaView>
+    </View>
   )
 }
 
